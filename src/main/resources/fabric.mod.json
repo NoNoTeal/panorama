@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "panorama",
+  "version": "${version}",
+  "name": "Panorama",
+  "description": "Fuck with your panorama title screen. [Port of that one forge mod]",
+  "authors": [
+    "xTeal",
+    "Alco_Rs11 (icon)"
+  ],
+  "contact": {
+    "issues": "https://github.com/NoNoTeal/panorama/issues",
+    "homepage": "https://github.com/NoNoTeal/panorama",
+    "sources": "https://github.com/NoNoTeal/panorama"
+  },
+  "license": "MIT",
+  "icon": "assets/panorama/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "xteal.panorama.Main"
+    ]
+  },
+  "mixins": [
+    "panorama.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.2",
+    "fabric": "*",
+    "minecraft": "1.18.2"
+  }
+}

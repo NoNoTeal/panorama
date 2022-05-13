@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xteal.panorama.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "GameRendererMixin",
+    "HeldItemRendererMixin",
+    "InGameHudMixin",
+    "TitleScreenMixin",
+    "RenderTickCounterMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
