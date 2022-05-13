@@ -22,8 +22,8 @@ public class Events {
     static int timer = 0;
 
     public static void screenshotEvent(MinecraftClient client) {
-        if (MinecraftClient.getInstance().world != null && MinecraftClient.getInstance().cameraEntity != null && Main.getMakePanoramaKeybind().isPressed() && !takePanorama) {
-            ClientPlayerEntity pe = MinecraftClient.getInstance().player;
+        if (client.world != null && client.cameraEntity != null && Main.getMakePanoramaKeybind().isPressed() && !takePanorama) {
+            ClientPlayerEntity pe = client.player;
             position = new Vec3d(pe.getX(), pe.getY(), pe.getZ());
             backupFov = MinecraftClient.getInstance().options.fov;
             MinecraftClient.getInstance().options.fov = 90.0;
@@ -36,7 +36,7 @@ public class Events {
     }
 
     public static void takeScreenshot(MinecraftClient client, int index) {
-        NativeImage image = ScreenshotRecorder.takeScreenshot(MinecraftClient.getInstance().getFramebuffer());
+        NativeImage image = ScreenshotRecorder.takeScreenshot(client.getFramebuffer());
         File file = new File("temp/panorama_" + index + ".png");
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
@@ -66,14 +66,13 @@ public class Events {
             if (timer >= 2) {
                 timer = 0;
                 if (index < 6) {
-                    client.options.fov = 90.0;
                     takeScreenshot(mc, index);
                     ++index;
                 } else {
                     takePanorama = false;
                     mc.options.fov = backupFov;
+                    client.options.hudHidden = false;
                     images.put(currentName, screenshots);
-
                     try {
                         Util.zipFiles(currentName);
                     } catch (Exception var3) {

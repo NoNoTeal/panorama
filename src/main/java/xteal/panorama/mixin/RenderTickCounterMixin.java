@@ -33,6 +33,7 @@ public abstract class RenderTickCounterMixin
                 client.getCameraEntity().setYaw(f.yaw);
                 client.getCameraEntity().setPitch(f.pitch);
                 client.options.fov = 90.0;
+                client.options.hudHidden = true;
             }
             Events.cameraEvent(MinecraftClient.getInstance());
             lastFrameDuration *= 0.1E-10;
